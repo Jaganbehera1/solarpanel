@@ -37,7 +37,7 @@ export function DashboardPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-gray-900">Dashboard</h1>
-          <p className="text-gray-600 mt-2">Welcome to the Solar Enterprises admin panel</p>
+          <p className="text-gray-600 mt-2">Welcome to the Kaashvi Solar Enterprises admin panel</p>
         </div>
 
         <div className="grid md:grid-cols-4 gap-6 mb-12">

@@ -22,7 +22,7 @@ export function Navbar() {
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center space-x-2">
             <Sun className="h-8 w-8 text-green-600" />
-            <span className="text-xl font-bold text-gray-900">Solar Enterprises</span>
+            <span className="text-xl font-bold text-gray-900">Kaashvi Solar Enterprises</span>
           </Link>
 
           <div className="hidden md:flex space-x-8">
