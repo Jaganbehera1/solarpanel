@@ -4,7 +4,7 @@ import bgVideo from '../../images/background3.mp4';
 export function ServicesPage() {
   return (
     <div className="bg-white">
-      <section className="bg-gradient-to-br from-green-600 to-blue-600 py-32 relative overflow-hidden">
+      <section className="bg-gradient-to-br from-green-600 to-blue-600 relative overflow-hidden w-full min-h-[340px] sm:min-h-[400px] md:min-h-[480px] lg:min-h-[550px] flex items-center">
         <video
           className="absolute inset-0 w-full h-full object-cover"
           src={bgVideo}
@@ -12,7 +12,8 @@ export function ServicesPage() {
           muted
           loop
           playsInline
-          preload="auto"
+          preload="metadata"
+          controls={false}
           aria-hidden="true"
         />
         <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -mr-48 -mt-48" />

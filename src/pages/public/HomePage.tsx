@@ -6,7 +6,7 @@ import kaashvisolar1 from '../../images/kaashvisolar1.jpeg';
 export function HomePage() {2
   return (
     <div className="bg-white">
-      <section className="relative min-h-[600px] flex items-center overflow-hidden">
+      <section className="relative w-full min-h-[450px] sm:min-h-[550px] md:min-h-[650px] lg:min-h-[750px] flex items-center overflow-hidden bg-black">
         <video
           className="absolute inset-0 w-full h-full object-cover"
           src={bgVideo}
@@ -14,7 +14,8 @@ export function HomePage() {2
           muted
           loop
           playsInline
-          preload="auto"
+          preload="metadata"
+          controls={false}
           aria-hidden="true"
         />
         <div className="absolute inset-0 bg-black/40" />
@@ -22,9 +23,9 @@ export function HomePage() {2
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6 text-white">
-              <h3 className="text-1.5xl sm:text-5xl md:text-6xl font-bold leading-tight">
+              <h3 className="text-1.5xl sm:text-5xl md:text-4xl font-bold leading-tight">
                 “ଆଜିହିଁ ଆପଣଙ୍କ ସୋଲାର ଯାତ୍ରା ଆରମ୍ଭ କରନ୍ତୁ”<br />
-                <span className="text-green-300"> ମୁକ୍ତ ପରାମର୍ଶ • ଦକ୍ଷ ସ୍ଥାପନା • ଭରସାଯୋଗ୍ୟ ସେବା</span>
+                <span className="text-green-300"> <br />• ମୁକ୍ତ ପରାମର୍ଶ <br />• ଦକ୍ଷ ସ୍ଥାପନା <br />• ଭରସାଯୋଗ୍ୟ ସେବା</span>
               </h3>
               <p className="text-lg sm:text-xl text-white/90 leading-relaxed">
                 ବିଦ୍ୟୁତ୍ ବିଲ୍‌ର ଚିନ୍ତା ନାହିଁ
