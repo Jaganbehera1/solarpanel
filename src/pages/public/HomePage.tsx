@@ -59,19 +59,37 @@ export function HomePage() {2
         </div>
       </section>
 
-      <section className="py-12 sm:py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-md mx-auto md:max-w-2xl">
-            <div className="bg-white rounded-2xl shadow-2xl overflow-hidden transform hover:scale-[1.01] transition-all border-2 border-green-100">
-              <img src={kaashvisolar1} alt="Kaashvi Solar installation" className="w-full h-64 sm:h-80 object-cover" />
-              <div className="p-6 sm:p-8">
-                <h3 className="text-2xl font-bold text-gray-900">Residential Solar Installation</h3>
-                <p className="text-gray-700 mt-3 text-lg">High-efficiency panels and professional installation tailored to your home.</p>
-                <Link to="/contact" className="inline-block mt-6 bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">
-                  Book a Free Consultation
-                </Link>
-              </div>
-            </div>
+      <section className="relative w-full bg-black flex items-center justify-center overflow-hidden">
+        <div className="w-full max-h-[80vh] md:max-h-[90vh] flex items-center justify-center">
+          <img
+            src={kaashvisolar1}
+            alt="Kaashvi Solar installation"
+            className="w-full h-auto max-h-[80vh] md:max-h-[90vh] object-contain"
+          />
+        </div>
+      </section>
+
+      <section className="bg-white py-10 sm:py-16">
+        <div className="max-w-3xl mx-auto px-4 text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-gray-900">
+            Residential Solar Installation
+          </h2>
+          <p className="mt-4 text-lg sm:text-xl text-gray-700">
+            High-efficiency panels and professional installation tailored to your home.
+          </p>
+          <div className="mt-6 flex items-center justify-center gap-4">
+            <Link
+              to="/contact"
+              className="bg-yellow-400 text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-yellow-300 shadow-lg transition"
+            >
+              Book a Free Consultation
+            </Link>
+            <Link
+              to="/gallery"
+              className="bg-gray-100 text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition"
+            >
+              View Our Projects
+            </Link>
           </div>
         </div>
       </section>
