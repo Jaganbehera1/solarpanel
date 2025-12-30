@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Sun, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import KSELogo from '../../images/KSE.jpg';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,12 +23,14 @@ export function Navbar() {
         <div className="flex justify-between items-center h-16">
 
           {/* Logo / Brand */}
-          <Link to="/" className="flex items-center space-x-3">
-            <Sun className="h-9 w-9 text-white" />
-            <span className="text-1.5xl md:text-3xl font-extrabold text-white tracking-wide">
-              Kaashvi Solar Enterprises
-            </span>
-          </Link>
+          <div className="flex items-center space-x-4">
+            <Link to="/" className="flex items-center space-x-3">
+              <img src={KSELogo} alt="Kaashvi Solar Enterprises" className="h-9 w-9 object-cover rounded-full" />
+              <span className="text-1.5xl md:text-3xl font-extrabold text-white tracking-wide">
+                Kaashvi Solar Enterprises
+              </span>
+            </Link>
+          </div>
 
           {/* Desktop Links */}
           <div className="hidden md:flex space-x-8">
