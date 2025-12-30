@@ -73,7 +73,7 @@ export function HomePage() {
           </div>
         </div>
       </section>
-      
+
       {/* ================= RESIDENTIAL SECTION ================= */}
       <section className="bg-white py-10 sm:py-16">
         <div className="max-w-3xl mx-auto px-4 text-center">
@@ -164,7 +164,7 @@ export function HomePage() {
                 <div className="text-sm">Installations</div>
               </div>
               <div>
-                <div className="text-4xl font-bold">25</div>
+                <div className="text-4xl font-bold">25*</div>
                 <div className="text-sm">Years Warranty</div>
               </div>
               <div>
