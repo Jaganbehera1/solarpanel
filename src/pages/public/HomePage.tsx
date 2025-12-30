@@ -27,7 +27,7 @@ export function HomePage() {
             {/* CENTER – TEXT */}
             <div className="space-y-6 text-center md:text-left">
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-gray-800">
-                “ଆଜିହିଁ ଆପଣଙ୍କ <br /> ସୋଲାର ଯାତ୍ରା ଆରମ୍ଭ କରନ୍ତୁ”
+                “ଆଜି ହିଁ ଆପଣଙ୍କ <br /> ସୋଲାର ଯାତ୍ରା ଆରମ୍ଭ କରନ୍ତୁ”
               </h1>
 
               <ul className="text-lg text-gray-700 space-y-2">
@@ -164,7 +164,7 @@ export function HomePage() {
                 <div className="text-sm">Installations</div>
               </div>
               <div>
-                <div className="text-4xl font-bold">25*</div>
+                <div className="text-4xl font-bold">25<span className="text-red-600 font-extrabold ml-1">*</span></div>
                 <div className="text-sm">Years Warranty</div>
               </div>
               <div>

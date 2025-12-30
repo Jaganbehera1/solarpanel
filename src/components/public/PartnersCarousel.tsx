@@ -1,47 +1,76 @@
-import logo1 from '../../images/CRI.png';
-import logo2 from '../../images/eastman.png';
-import logo3 from '../../images/HR solar.jpg';
-import logo4 from '../../images/ksb-logo.png';
-import logo5 from '../../images/Microtek-Logo-Vector.svg-.png';
-import logo6 from '../../images/okaya.png';
+import exide from '../../images/exide-solar.jpg';
+import luminous from '../../images/luminous_solar.png';
+import vikram from '../../images/vikarm_solar.webp';
+import usha from '../../images/usha_sriram.png';
+import waaree from '../../images/waaree.jpg';
+import jakson from '../../images/jakson.avif';
+import adani from '../../images/adani.png';
+import lg from '../../images/LG.png';
+import rec from '../../images/rec-solar-logo.webp';
+import moserbaer from '../../images/Moser_Baer_Solar_Limited_logo.jpg';
+import fronius from '../../images/Fronius-logo.png';
+import solaredge from '../../images/SolarEdge.webp';
+import sma from '../../images/sma.svg';
+import delta from '../../images/DELTA_Electronics_Logo.png';
+import tata from '../../images/TPS-Logo-Print.jpg';
+import abb from '../../images/ABB_logo.svg.png';
+import sungrow from '../../images/sungrow.png';
+import consul from '../../images/consul.jpeg';
+import havells from '../../images/Havells_Logo.svg.png';
 
 export function PartnersCarousel() {
   const logos = [
-    { src: logo1, name: 'CRI' },
-    { src: logo2, name: 'Eastman' },
-    { src: logo3, name: 'HR Solar' },
-    { src: logo4, name: 'KSB' },
-    { src: logo5, name: 'Microtek' },
-    { src: logo6, name: 'OKAYA' },
+    { src: exide, name: 'Exide Solar' },
+    { src: luminous, name: 'Luminous Solar' },
+    { src: vikram, name: 'Vikram Solar' },
+    { src: usha, name: 'Usha Shriram' },
+    { src: waaree, name: 'Waaree' },
+    { src: jakson, name: 'Jakson' },
+    { src: adani, name: 'Adani Solar' },
+    { src: lg, name: 'LG Solar' },
+    { src: rec, name: 'REC Solar' },
+    { src: moserbaer, name: 'Moserbaer Solar' },
+    { src: fronius, name: 'Fronius' },
+    { src: solaredge, name: 'SolarEdge' },
+    { src: sma, name: 'SMA' },
+    { src: delta, name: 'Delta Electronics' },
+    { src: tata, name: 'Tata Power Solar' },
+    { src: abb, name: 'ABB' },
+    { src: sungrow, name: 'Sungrow' },
+    { src: consul, name: 'Consul Neowatt' },
+    { src: havells, name: 'Havells' },
   ];
 
-  // Duplicate logos for seamless infinite scroll
-  const repeatedLogos = [...logos, ...logos, ...logos];
+  const repeatedLogos = [...logos, ...logos]; // ✅ correct duplication
 
   return (
-    <section className="py-16 bg-gradient-to-r from-gray-50 via-white to-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Trusted by Industry Leaders</h3>
-          <p className="text-gray-600 text-lg">We partner with the best brands in the solar industry</p>
+    <section className="py-16 bg-white">
+      <div className="max-w-7xl mx-auto px-4">
+
+        <div className="text-center mb-10">
+          <h3 className="text-3xl md:text-4xl font-bold text-gray-900">
+            Trusted Solar Brands
+          </h3>
+          <p className="text-gray-600 mt-2">
+            We work with India’s leading solar manufacturers
+          </p>
         </div>
 
         <div className="relative overflow-hidden">
-          {/* Gradient overlays for fade effect */}
-          <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-r from-gray-50 via-gray-50/50 to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-l from-gray-50 via-gray-50/50 to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-white to-transparent z-10" />
+          <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-white to-transparent z-10" />
 
-          <div className="flex animate-scroll">
+          <div className="flex animate-scroll w-max">
             {repeatedLogos.map((logo, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 px-4 sm:px-6 py-8 flex items-center justify-center"
+                className="flex-shrink-0 w-[220px] px-6 py-6"
               >
-                <div className="w-full h-24 sm:h-28 md:h-32 flex items-center justify-center bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 p-4">
+                <div className="h-28 flex items-center justify-center bg-white rounded-xl shadow-md hover:shadow-lg transition">
                   <img
                     src={logo.src}
                     alt={logo.name}
-                    className="max-w-full max-h-full object-contain"
+                    className="max-h-full max-w-full object-contain"
                   />
                 </div>
               </div>
@@ -51,22 +80,19 @@ export function PartnersCarousel() {
 
         <style>{`
           @keyframes scroll {
-            0% {
-              transform: translateX(0);
-            }
-            100% {
-              transform: translateX(calc(-100% / 3));
-            }
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
           }
 
           .animate-scroll {
-            animation: scroll 10s linear infinite;
+            animation: scroll 25s linear infinite;
           }
 
           .animate-scroll:hover {
             animation-play-state: paused;
           }
         `}</style>
+
       </div>
     </section>
   );

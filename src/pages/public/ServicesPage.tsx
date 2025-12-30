@@ -1,10 +1,30 @@
-import { Home, Building2, Wrench, LineChart, Battery, Sun } from 'lucide-react';
+import {
+  Home,
+  Building2,
+  Wrench,
+  LineChart,
+  Battery,
+  Sun,
+} from 'lucide-react';
+
 import bgVideo from '../../images/background3.mp4';
+
+// Service images
+import annualMaintenance from '../../images/services/AMS_ihsufv.jpg';
+import solarUpgradation from '../../images/services/Solar-Upgradation_zqb2mk.jpg';
+import panelCleaning from '../../images/services/Solar-Panel-Cleaning_psz0u9.jpg';
+import batteryMaintenance from '../../images/services/Battery-Maintenance_o9537u.jpg';
+import inverterUpgrade from '../../images/services/Inverter-Upgrade_yoycho.jpg';
+import installation from '../../images/services/Installation-solar_yly1qv.jpg';
+import irrigation from '../../images/services/Solar-Irrigation-Pumping_zxg3pu.jpg';
+import streetLight from '../../images/services/led-street-light-_m6bnnu.png';
 
 export function ServicesPage() {
   return (
     <div className="bg-white">
-      <section className="bg-gradient-to-br from-green-600 to-blue-600 relative overflow-hidden w-full min-h-[340px] sm:min-h-[400px] md:min-h-[480px] lg:min-h-[550px] flex items-center">
+
+      {/* ================= HERO SECTION ================= */}
+      <section className="relative w-full min-h-[420px] flex items-center overflow-hidden">
         <video
           className="absolute inset-0 w-full h-full object-cover"
           src={bgVideo}
@@ -12,225 +32,174 @@ export function ServicesPage() {
           muted
           loop
           playsInline
-          preload="metadata"
-          controls={false}
-          aria-hidden="true"
         />
-        <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -mr-48 -mt-48" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/10 rounded-full -ml-48 -mb-48" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center">
-            {/* <h1 className="text-5xl sm:text-6xl font-bold text-white mb-6">Our Services</h1> */}
-            <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-              Comprehensive solar solutions tailored to your unique energy needs.
-              From consultation to installation and maintenance, we've got you covered.
+        <div className="absolute inset-0 bg-black/40" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 text-center text-white">
+          <h1 className="text-4xl sm:text-5xl font-bold mb-4">Our Services</h1>
+          <p className="text-lg max-w-3xl mx-auto">
+            Comprehensive solar solutions from consultation to installation and long-term maintenance.
+          </p>
+        </div>
+      </section>
+
+      {/* ================= IMAGE SERVICES GRID ================= */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900">What We Offer</h2>
+            <p className="text-gray-600 mt-3">
+              End-to-end solar services for residential & commercial needs
             </p>
           </div>
-        </div>
-      </section>
 
-      <section className="py-20 sm:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-10 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-l-4 border-blue-600">
-              <div className="bg-blue-600 w-20 h-20 rounded-full flex items-center justify-center mb-8">
-                <Home className="h-10 w-10 text-white" />
-              </div>
-              <h3 className="text-3xl font-bold text-gray-900 mb-4">Residential Solar</h3>
-              <p className="text-gray-700 text-lg leading-relaxed mb-6">
-                Transform your home with our premium residential solar panel installations.
-                We design custom systems that maximize energy production while seamlessly
-                integrating with your home's architecture.
-              </p>
-              <ul className="space-y-4 text-gray-700">
-                <li className="flex items-start">
-                  <span className="text-blue-600 mr-3 font-bold">✓</span>
-                  <span>Free home energy assessment</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-blue-600 mr-3 font-bold">✓</span>
-                  <span>Custom system design</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-blue-600 mr-3 font-bold">✓</span>
-                  <span>Professional installation</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-blue-600 mr-3 font-bold">✓</span>
-                  <span>25-year warranty included</span>
-                </li>
-              </ul>
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { img: annualMaintenance, title: 'Annual Maintenance' },
+              { img: solarUpgradation, title: 'Solar Upgradation' },
+              { img: panelCleaning, title: 'Solar Panel Cleaning' },
+              { img: batteryMaintenance, title: 'Battery Maintenance' },
+              { img: inverterUpgrade, title: 'Inverter Upgrade' },
+              { img: installation, title: 'Installation' },
+              { img: irrigation, title: 'Solar Irrigation Pumping' },
+              { img: streetLight, title: 'Solar Street Lighting' },
+            ].map((service, index) => (
+              <div
+                key={index}
+                className="relative group overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition"
+              >
+                <img
+                  src={service.img}
+                  alt={service.title}
+                  className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500"
+                />
 
-            <div className="bg-gradient-to-br from-green-50 to-green-100 p-10 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-l-4 border-green-600">
-              <div className="bg-green-600 w-20 h-20 rounded-full flex items-center justify-center mb-8">
-                <Building2 className="h-10 w-10 text-white" />
+                <div className="absolute inset-0 bg-black/35 flex items-end">
+                  <div className="w-full bg-pink-600/90 text-white text-center py-3 text-lg font-bold">
+                    {service.title}
+                  </div>
+                </div>
               </div>
-              <h3 className="text-3xl font-bold text-gray-900 mb-4">Commercial Solar</h3>
-              <p className="text-gray-700 text-lg leading-relaxed mb-6">
-                Power your business with sustainable energy solutions. Our commercial solar
-                systems help businesses reduce operational costs while demonstrating
-                environmental responsibility.
-              </p>
-              <ul className="space-y-4 text-gray-700">
-                <li className="flex items-start">
-                  <span className="text-green-600 mr-3 font-bold">✓</span>
-                  <span>ROI analysis and projections</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-600 mr-3 font-bold">✓</span>
-                  <span>Scalable system design</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-600 mr-3 font-bold">✓</span>
-                  <span>Minimal business disruption</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-600 mr-3 font-bold">✓</span>
-                  <span>Ongoing maintenance support</span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 p-10 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-l-4 border-yellow-600">
-              <div className="bg-yellow-600 w-20 h-20 rounded-full flex items-center justify-center mb-8">
-                <Sun className="h-10 w-10 text-white" />
-              </div>
-              <h3 className="text-3xl font-bold text-gray-900 mb-4">System Design</h3>
-              <p className="text-gray-700 text-lg leading-relaxed mb-6">
-                Expert solar system design optimized for your location, roof structure,
-                and energy consumption patterns. We ensure maximum efficiency and return
-                on investment.
-              </p>
-              <ul className="space-y-4 text-gray-700">
-                <li className="flex items-start">
-                  <span className="text-yellow-600 mr-3 font-bold">✓</span>
-                  <span>Site assessment and planning</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-yellow-600 mr-3 font-bold">✓</span>
-                  <span>Energy consumption analysis</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-yellow-600 mr-3 font-bold">✓</span>
-                  <span>3D system visualization</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-yellow-600 mr-3 font-bold">✓</span>
-                  <span>Production guarantees</span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="bg-gradient-to-br from-red-50 to-red-100 p-10 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-l-4 border-red-600">
-              <div className="bg-red-600 w-20 h-20 rounded-full flex items-center justify-center mb-8">
-                <Wrench className="h-10 w-10 text-white" />
-              </div>
-              <h3 className="text-3xl font-bold text-gray-900 mb-4">Maintenance & Support</h3>
-              <p className="text-gray-700 text-lg leading-relaxed mb-6">
-                Keep your solar system running at peak performance with our comprehensive
-                maintenance services. We provide regular inspections, cleaning, and repairs
-                to ensure optimal energy production.
-              </p>
-              <ul className="space-y-4 text-gray-700">
-                <li className="flex items-start">
-                  <span className="text-red-600 mr-3 font-bold">✓</span>
-                  <span>Annual system inspections</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-red-600 mr-3 font-bold">✓</span>
-                  <span>Panel cleaning services</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-red-600 mr-3 font-bold">✓</span>
-                  <span>Performance monitoring</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-red-600 mr-3 font-bold">✓</span>
-                  <span>24/7 customer support</span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-10 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-l-4 border-purple-600">
-              <div className="bg-purple-600 w-20 h-20 rounded-full flex items-center justify-center mb-8">
-                <Battery className="h-10 w-10 text-white" />
-              </div>
-              <h3 className="text-3xl font-bold text-gray-900 mb-4">Battery Storage</h3>
-              <p className="text-gray-700 text-lg leading-relaxed mb-6">
-                Maximize your energy independence with advanced battery storage solutions.
-                Store excess solar energy for use during peak hours or power outages,
-                ensuring continuous power supply.
-              </p>
-              <ul className="space-y-4 text-gray-700">
-                <li className="flex items-start">
-                  <span className="text-purple-600 mr-3 font-bold">✓</span>
-                  <span>Latest battery technology</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-purple-600 mr-3 font-bold">✓</span>
-                  <span>Backup power capability</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-purple-600 mr-3 font-bold">✓</span>
-                  <span>Smart energy management</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-purple-600 mr-3 font-bold">✓</span>
-                  <span>10-year warranty</span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="bg-gradient-to-br from-teal-50 to-teal-100 p-10 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-l-4 border-teal-600">
-              <div className="bg-teal-600 w-20 h-20 rounded-full flex items-center justify-center mb-8">
-                <LineChart className="h-10 w-10 text-white" />
-              </div>
-              <h3 className="text-3xl font-bold text-gray-900 mb-4">Energy Monitoring</h3>
-              <p className="text-gray-700 text-lg leading-relaxed mb-6">
-                Track your energy production and consumption in real-time with our advanced
-                monitoring systems. Get detailed insights and optimize your energy usage
-                for maximum savings.
-              </p>
-              <ul className="space-y-4 text-gray-700">
-                <li className="flex items-start">
-                  <span className="text-teal-600 mr-3 font-bold">✓</span>
-                  <span>Real-time monitoring app</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-teal-600 mr-3 font-bold">✓</span>
-                  <span>Production alerts</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-teal-600 mr-3 font-bold">✓</span>
-                  <span>Usage analytics</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-teal-600 mr-3 font-bold">✓</span>
-                  <span>Performance reports</span>
-                </li>
-              </ul>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="py-20 sm:py-32 bg-gradient-to-br from-green-600 via-teal-600 to-blue-600 text-white relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -mr-48 -mt-48" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-8">Ready to Get Started?</h2>
-          <p className="text-xl text-white/90 mb-12 max-w-3xl mx-auto">
-            Contact us today for a free consultation and discover how solar energy
-            can transform your home or business.
-          </p>
-          <a
-            href="/contact"
-            className="inline-block bg-yellow-400 text-gray-900 px-10 py-4 rounded-lg font-bold text-lg hover:bg-yellow-300 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-          >
-            Schedule Free Consultation
-          </a>
+      {/* ================= DETAILED SERVICES ================= */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-8">
+
+          {/* Residential */}
+          <ServiceCard
+            icon={<Home className="h-10 w-10 text-white" />}
+            title="Residential Solar"
+            color="blue"
+            items={[
+              'Free home energy assessment',
+              'Custom system design',
+              'Professional installation',
+              '25-year warranty',
+            ]}
+          />
+
+          {/* Commercial */}
+          <ServiceCard
+            icon={<Building2 className="h-10 w-10 text-white" />}
+            title="Commercial Solar"
+            color="green"
+            items={[
+              'ROI analysis',
+              'Scalable design',
+              'Minimal disruption',
+              'Maintenance support',
+            ]}
+          />
+
+          {/* Design */}
+          <ServiceCard
+            icon={<Sun className="h-10 w-10 text-white" />}
+            title="System Design"
+            color="yellow"
+            items={[
+              'Site assessment',
+              'Energy analysis',
+              '3D visualization',
+              'Production guarantee',
+            ]}
+          />
+
+          {/* Maintenance */}
+          <ServiceCard
+            icon={<Wrench className="h-10 w-10 text-white" />}
+            title="Maintenance & Support"
+            color="red"
+            items={[
+              'Annual inspection',
+              'Panel cleaning',
+              'Monitoring',
+              '24/7 support',
+            ]}
+          />
+
+          {/* Battery */}
+          <ServiceCard
+            icon={<Battery className="h-10 w-10 text-white" />}
+            title="Battery Storage"
+            color="purple"
+            items={[
+              'Latest batteries',
+              'Backup power',
+              'Smart management',
+              '10-year warranty',
+            ]}
+          />
+
+          {/* Monitoring */}
+          <ServiceCard
+            icon={<LineChart className="h-10 w-10 text-white" />}
+            title="Energy Monitoring"
+            color="teal"
+            items={[
+              'Real-time tracking',
+              'Alerts',
+              'Usage analytics',
+              'Performance reports',
+            ]}
+          />
+
         </div>
       </section>
+    </div>
+  );
+}
+
+/* ================= REUSABLE CARD ================= */
+function ServiceCard({
+  icon,
+  title,
+  color,
+  items,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  color: string;
+  items: string[];
+}) {
+  return (
+    <div className={`bg-${color}-50 border-l-4 border-${color}-600 p-8 rounded-2xl shadow-lg hover:shadow-xl transition`}>
+      <div className={`bg-${color}-600 w-20 h-20 rounded-full flex items-center justify-center mb-6`}>
+        {icon}
+      </div>
+      <h3 className="text-2xl font-bold mb-4">{title}</h3>
+      <ul className="space-y-3 text-gray-700">
+        {items.map((item, i) => (
+          <li key={i} className="flex">
+            <span className={`text-${color}-600 mr-2 font-bold`}>✓</span>
+            {item}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

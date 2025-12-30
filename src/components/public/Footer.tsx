@@ -42,11 +42,11 @@ export function Footer() {
       window.open(whatsappUrl, '_blank');
     }
   };
-
   return (
     <>
-      <footer className="bg-gray-900 text-white py-12">
+     <footer className="bg-gray-900 text-white py-12 pb-28 md:pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
               <h3 className="text-xl font-bold mb-4">Kaashvi Solar Enterprises</h3>
@@ -86,17 +86,33 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; {new Date().getFullYear()} Kaashvi Solar Enterprises. All rights reserved.</p>
+          {/* Bottom Section */}
+          <div className="border-t border-gray-800 mt-8 pt-6 text-center text-gray-400 space-y-2">
+            <p>
+              &copy; {new Date().getFullYear()} Kaashvi Solar Enterprises. All rights reserved.
+            </p>
+
+            <p className="text-sm">
+              Developed by{' '}
+              <a
+                href="https://jaganwebsolutions.netlify.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-green-400 hover:text-green-300 font-semibold transition-colors"
+              >
+                Jagan Web Solutions
+              </a>
+            </p>
           </div>
         </div>
       </footer>
 
+      {/* Mobile Bottom Action Bar */}
       <div className="fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t border-gray-200 py-3 px-4 z-40">
         <div className="max-w-7xl mx-auto flex justify-around items-center">
           <button
             onClick={handleCall}
-            className="flex flex-col items-center space-y-1 text-blue-600 hover:text-blue-700 transition-colors"
+            className="flex flex-col items-center space-y-1 text-blue-600 hover:text-blue-700"
           >
             <div className="bg-blue-100 p-3 rounded-full">
               <Phone className="h-6 w-6" />
@@ -106,7 +122,7 @@ export function Footer() {
 
           <button
             onClick={handleEmail}
-            className="flex flex-col items-center space-y-1 text-red-600 hover:text-red-700 transition-colors"
+            className="flex flex-col items-center space-y-1 text-red-600 hover:text-red-700"
           >
             <div className="bg-red-100 p-3 rounded-full">
               <Mail className="h-6 w-6" />
@@ -116,7 +132,7 @@ export function Footer() {
 
           <button
             onClick={handleWhatsApp}
-            className="flex flex-col items-center space-y-1 text-green-600 hover:text-green-700 transition-colors"
+            className="flex flex-col items-center space-y-1 text-green-600 hover:text-green-700"
           >
             <div className="bg-green-100 p-3 rounded-full">
               <MessageCircle className="h-6 w-6" />
