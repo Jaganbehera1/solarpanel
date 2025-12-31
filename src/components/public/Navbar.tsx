@@ -63,17 +63,28 @@ export function Navbar() {
             </div>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-white focus:outline-none"
-          >
-            {isOpen ? (
-              <X className="h-7 w-7" />
-            ) : (
-              <Menu className="h-7 w-7" />
-            )}
-          </button>
+          {/* Mobile language toggle + Menu button */}
+          <div className="md:hidden flex items-center space-x-2">
+            {/* Language toggle (left side) */}
+            <button
+              onClick={() => setLang(lang === 'od' ? 'en' : 'od')}
+              className="px-2 py-1 rounded text-xs font-medium bg-white/10 hover:bg-white/20 text-white"
+              aria-label="Toggle language"
+            >
+              {lang === 'od' ? t('language_short_en') : t('language_short_od')}
+            </button>
+            {/* Hamburger menu button (right side) */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-white focus:outline-none"
+            >
+              {isOpen ? (
+                <X className="h-7 w-7" />
+              ) : (
+                <Menu className="h-7 w-7" />
+              )}
+            </button>
+          </div>
 
         </div>
       </div>
