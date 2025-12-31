@@ -76,7 +76,7 @@ export function ServicesPage() {
                 />
 
                 <div className="absolute inset-0 bg-black/35 flex items-end">
-                  <div className="w-full bg-pink-600/90 text-white text-center py-3 text-lg font-bold">
+                  <div className="w-full bg-blue-900/90 text-white text-center py-3 text-lg font-bold">
                     {service.title}
                   </div>
                 </div>
@@ -99,7 +99,7 @@ export function ServicesPage() {
               'Free home energy assessment',
               'Custom system design',
               'Professional installation',
-              '25-year warranty',
+              '25*-year warranty',
             ]}
           />
 
@@ -151,7 +151,7 @@ export function ServicesPage() {
               'Latest batteries',
               'Backup power',
               'Smart management',
-              '10-year warranty',
+              'upto 10-year warranty',
             ]}
           />
 

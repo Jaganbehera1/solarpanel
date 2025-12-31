@@ -2,17 +2,20 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import KSELogo from '../../images/KSE.jpg';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
+  const { t, lang, setLang } = useLanguage();
+
   const links = [
-    { to: '/', label: 'Home' },
-    { to: '/about', label: 'About Us' },
-    { to: '/services', label: 'Services' },
-    { to: '/gallery', label: 'Projects' },
-    { to: '/contact', label: 'Contact' },
+    { to: '/', label: t('nav_home') },
+    { to: '/about', label: t('nav_about') },
+    { to: '/services', label: t('nav_services') },
+    { to: '/gallery', label: t('nav_projects') },
+    { to: '/contact', label: t('nav_contact') },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -47,6 +50,17 @@ export function Navbar() {
                 {link.label}
               </Link>
             ))}
+            
+            {/* Single language toggle button */}
+            <div className="flex items-center ml-4">
+              <button
+                onClick={() => setLang(lang === 'od' ? 'en' : 'od')}
+                className="px-3 py-1 rounded-full text-sm font-medium bg-white/10 hover:bg-white/20 text-white"
+                aria-label="Toggle language"
+              >
+                {lang === 'od' ? t('language_short_en') : t('language_short_od')}
+              </button>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}

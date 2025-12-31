@@ -1,8 +1,34 @@
 import { useEffect, useState } from 'react';
-import { X, Play } from 'lucide-react';
+import { X } from 'lucide-react';
 import { collection, query, orderBy, getDocs } from 'firebase/firestore';
 import { db, GalleryItem } from '../../lib/firebase';
+import { GalleryCard } from '../../components/GalleryCard';
 import bgVideo from '../../images/background4.mp4';
+
+// Helper function to extract YouTube video ID
+function extractYoutubeId(url: string): string | null {
+  try {
+    if (url.includes('youtu.be/')) {
+      const parts = url.split('youtu.be/');
+      if (parts[1]) {
+        return parts[1].split('?')[0].split('&')[0];
+      }
+    }
+    if (url.includes('youtube.com/watch')) {
+      const urlObj = new URL(url);
+      return urlObj.searchParams.get('v');
+    }
+    if (url.includes('youtube.com/embed/')) {
+      const parts = url.split('youtube.com/embed/');
+      if (parts[1]) {
+        return parts[1].split('?')[0].split('&')[0];
+      }
+    }
+  } catch {
+    return null;
+  }
+  return null;
+}
 
 
 export function GalleryPage() {
@@ -10,6 +36,7 @@ export function GalleryPage() {
   const [filter, setFilter] = useState<'all' | 'image' | 'video'>('all');
   const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
   const [loading, setLoading] = useState(true);
+  const [activePlayingId, setActivePlayingId] = useState<string | null>(null);
 
   useEffect(() => {
     loadGallery();
@@ -111,36 +138,16 @@ export function GalleryPage() {
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredItems.map((item) => (
-                <div
+                <GalleryCard
                   key={item.id}
-                  onClick={() => setSelectedItem(item)}
-                  className="group cursor-pointer bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-3 border border-gray-100"
-                >
-                  <div className="relative aspect-video bg-gradient-to-br from-green-100 to-blue-100 overflow-hidden">
-                    {item.type === 'image' ? (
-                      <img
-                        src={item.url}
-                        alt={item.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900">
-                        <div className="bg-white bg-opacity-95 rounded-full p-6 group-hover:bg-opacity-100 group-hover:scale-110 transition-all duration-300">
-                          <Play className="h-12 w-12 text-green-600" />
-                        </div>
-                      </div>
-                    )}
-                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-opacity duration-300"></div>
-                  </div>
-                  {item.title && (
-                    <div className="p-6">
-                      <h3 className="font-semibold text-gray-900 text-lg group-hover:text-green-600 transition-colors">{item.title}</h3>
-                      {item.description && (
-                        <p className="text-gray-600 text-sm mt-2 leading-relaxed">{item.description}</p>
-                      )}
-                    </div>
-                  )}
-                </div>
+                  item={item}
+                  activePlayingId={activePlayingId}
+                  onPlayRequest={(id) => setActivePlayingId(id)}
+                  onClick={() => {
+                    setSelectedItem(item);
+                    setActivePlayingId(null);
+                  }}
+                />
               ))}
             </div>
           )}
@@ -150,11 +157,11 @@ export function GalleryPage() {
       {selectedItem && (
         <div
           className="fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center p-4 backdrop-blur-sm"
-          onClick={() => setSelectedItem(null)}
+          onClick={() => { setSelectedItem(null); setActivePlayingId(null); }}
         >
           <button
             className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors bg-black/50 hover:bg-black/80 rounded-full p-2"
-            onClick={() => setSelectedItem(null)}
+            onClick={() => { setSelectedItem(null); setActivePlayingId(null); }}
           >
             <X className="h-8 w-8" />
           </button>
@@ -166,14 +173,27 @@ export function GalleryPage() {
                 alt={selectedItem.title}
                 className="w-full h-auto rounded-2xl shadow-2xl"
               />
-            ) : (
-              <video
-                src={selectedItem.url}
-                controls
-                autoPlay
-                className="w-full h-auto rounded-2xl shadow-2xl"
-              />
-            )}
+            ) : (() => {
+              const youtubeId = extractYoutubeId(selectedItem.url);
+              return youtubeId ? (
+                <iframe
+                  width="100%"
+                  height="600"
+                  src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=0`}
+                  title={selectedItem.title || 'Video'}
+                  allowFullScreen
+                  className="rounded-2xl shadow-2xl"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                />
+              ) : (
+                <video
+                  src={selectedItem.url}
+                  controls
+                  autoPlay
+                  className="w-full h-auto rounded-2xl shadow-2xl"
+                />
+              );
+            })()}
             {selectedItem.title && (
               <div className="mt-6 text-white text-center">
                 <h3 className="text-3xl font-bold">{selectedItem.title}</h3>

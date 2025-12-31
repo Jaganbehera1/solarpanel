@@ -13,6 +13,19 @@ import { db, GalleryItem } from '../../lib/firebase';
 import { supabase, GALLERY_BUCKET } from '../../lib/supabase';
 import { useAuth } from '../../contexts/AuthContext';
 
+// Helper function to detect if URL is a YouTube link
+function isYoutubeUrl(url: string): boolean {
+  try {
+    return (
+      url.includes('youtube.com') ||
+      url.includes('youtu.be') ||
+      url.includes('youtube-nocookie.com')
+    );
+  } catch {
+    return false;
+  }
+}
+
 export function GalleryManagementPage() {
   const [items, setItems] = useState<GalleryItem[]>([]);
   const [loading, setLoading] = useState(true);
@@ -29,6 +42,14 @@ export function GalleryManagementPage() {
   }, []);
 
   const [pickerOpen, setPickerOpen] = useState(false);
+
+  // Auto-detect YouTube URLs and update type accordingly
+  const handleUrlChange = (newUrl: string) => {
+    setUrl(newUrl);
+    if (isYoutubeUrl(newUrl)) {
+      setType('video');
+    }
+  };
 
   const loadGallery = async () => {
     setLoading(true);
@@ -63,7 +84,7 @@ export function GalleryManagementPage() {
         const fileExt = file.name.split('.').pop();
         const filename = `${user.uid}/${Date.now()}.${fileExt}`;
         
-        const { error: uploadError, data } = await supabase.storage
+        const { error: uploadError } = await supabase.storage
           .from(GALLERY_BUCKET)
           .upload(filename, file, { upsert: false });
 
@@ -181,12 +202,13 @@ export function GalleryManagementPage() {
               <input
                 type="url"
                 value={url}
-                onChange={(e) => setUrl(e.target.value)}
+                onChange={(e) => handleUrlChange(e.target.value)}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                placeholder="https://example.com/image.jpg"
+                placeholder="https://example.com/image.jpg or https://youtube.com/watch?v=..."
               />
               <p className="text-sm text-gray-500 mt-2">
-                Provide an external URL, or upload a file from your system below.
+                Provide an external URL (including YouTube links), or upload a file from your system below.
+                YouTube links will automatically be detected and set as video type.
               </p>
             </div>
 
