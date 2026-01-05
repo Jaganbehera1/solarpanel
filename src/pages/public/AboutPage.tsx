@@ -1,6 +1,6 @@
 import { Users, Award, Target, Heart } from 'lucide-react';
 import kaashvi2 from '../../images/kaashvisolar2.jpeg';
-import bgVideo from '../../images/background.mp4';
+import bgVideo from '../../images/background2.mp4';
 
 export function AboutPage() {
   return (
